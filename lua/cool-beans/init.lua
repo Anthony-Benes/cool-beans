@@ -2,7 +2,6 @@
 ---@field config CoolBeansConfig
 ---@field palette CoolBeansPalette
 local CoolBeans = {}
----@alias Contrast "hard" | "soft" | ""
 ---@class ItalicConfig
 ---@field strings boolean
 ---@field comments boolean
@@ -28,7 +27,6 @@ local CoolBeans = {}
 
 ---@class CoolBeansConfig
 ---@field bold boolean?
----@field contrast Contrast?
 ---@field dim_inactive boolean?
 ---@field inverse boolean?
 ---@field invert_selection boolean?
@@ -59,7 +57,6 @@ local default_config = {
     invert_signs = false,
     invert_tabline = false,
     inverse = true,
-    contrast = "",
     palette_overrides = {},
     overrides = {},
     dim_inactive = true,
@@ -173,7 +170,6 @@ local function get_colors()
         p[color] = hex
     end
     local bg = vim.o.background
-    local contrast = config.contrast
     local color_groups = {
         dark = {
             bg0 = p.dark0,
@@ -416,6 +412,17 @@ local function get_groups()
         diffOldFile = { link = "CBOrange" },
         diffLine = { link = "CBBlue" },
         diffIndexLine = { link = "diffChanged" },
+        -- Status Line Groups
+        SLBgRed = { bg = colors.red },
+        SLBgOrange = { bg = colors.orange },
+        SLBgYellow = { bg = colors.yellow },
+        SLBgGreen = { bg = colors.green },
+        SLBgCyan = { bg = colors.cyan },
+        SLBgBlue = { bg = colors.blue },
+        SLBgPurple = { bg = colors.purple },
+        SLBgBlack = { bg = colors.bg0 },
+        SLBgGray = { bg = colors.gray },
+        SLBgWhite = { bg = colors.fg0 },
         -- LSP Types
         Constant = { fg = colors.cyan },
         Character = { link = "Constant" },
